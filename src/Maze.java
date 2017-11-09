@@ -43,9 +43,11 @@ public class Maze
     }
     private boolean isExit(int row, int col)
     {
-        if(row == board.length-1 && col == board[0].length -1) {
 
-        }
+        if(row == board.length-1 && col == board[0].length -1)
+                return true;
+        else
+            return false;
     }
 
     public static void main(String[] args) {
