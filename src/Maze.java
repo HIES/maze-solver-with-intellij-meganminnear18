@@ -100,21 +100,7 @@ public class Maze
 
     public static void main(String[] args) throws Exception {
         StdDraw.enableDoubleBuffering();
-//        int[][] maze = {{1,1,0,0,0,0,0,0,0,0},
-//                        {0,1,1,1,1,0,1,1,1,0},
-//                        {0,1,1,1,1,0,1,1,0,0},
-//                        {0,1,0,1,1,1,1,1,1,0},
-//                        {0,1,0,0,0,0,0,1,1,0},
-//                        {0,1,1,0,1,1,1,1,1,0},
-//                        {0,0,1,0,0,1,0,1,0,0},
-//                        {0,1,1,0,1,1,0,1,1,0},
-//                        {0,1,1,0,1,1,0,1,1,0},
-//                        {0,0,0,0,0,0,0,0,1,1}};
-//        Maze geerid = new Maze(maze.length, maze[0].length, maze);
-//        geerid.draw();
-//        geerid.findPath(0, 0);
-//        geerid.draw();
-        int[][] maze = readFile("Maze3", ".csv");
+        int[][] maze = readFile("Maze2", ".csv");
         Maze geerid = new Maze(maze.length, maze[0].length, maze);
         geerid.draw();
         geerid.findPath(0,0);
@@ -122,29 +108,29 @@ public class Maze
     }
 
     private static int[][] readFile(String name, String extension) throws FileNotFoundException {
-//        int countRow = 0;
-//        int countCol = 0;
-//        File countFileName = new File(name + extension);
-//        Scanner countInputObject = new Scanner(countFileName);
-//        String[] row1 = countInputObject.nextLine().split(",");
-//
-//        for(int x = 0; x < row1.length; x++){
-//            countCol++;
-//        }
-//        countRow++;
-//
-//        while(countInputObject.hasNextLine()){
-//            countRow++;
-//            countInputObject.nextLine();
-//        }
-//        countInputObject.close();
-//
+        int countRow = 0;
+        int countCol = 0;
+        File countFileName = new File(name + extension);
+        Scanner countInputObject = new Scanner(countFileName);
+        String[] row1 = countInputObject.nextLine().split(",");
+
+        for(String col: row1){
+            countCol++;
+        }
+        
+        countRow++;
+
+        while(countInputObject.hasNextLine()){
+            countRow++;
+            countInputObject.nextLine();
+        }
+        countInputObject.close();
+
         File fileName = new File(name + extension);
         Scanner inputObject = new Scanner(fileName);
-//
-//      int[][] maze = new int[Integer.parseInt(arraySizes[0])][Integer.parseInt(arraySizes[1])];
-//        int[][] maze = new int[countRow][countCol];
-        int[][] maze = new int[10][10];
+
+        int[][] maze = new int[countRow][countCol];
+
 
         for(int row = 0; inputObject.hasNextLine(); row++){
             String aRow = inputObject.nextLine();
@@ -155,13 +141,6 @@ public class Maze
 
         }
         inputObject.close();
-
-            for (int i = 0; i < maze.length; i++) {
-                for (int j = 0; j < maze[0].length; j++) {
-                    System.out.print(maze[i][j]);
-                }
-                System.out.println();
-            }
 
         return maze;
 
